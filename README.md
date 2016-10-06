@@ -87,3 +87,22 @@ ssh USERNAME@lxplus.cern.ch
    cd $CMSSW_BASE/src
    source herwig7-env.sh
    ```
+
+### Test of setup
+* You can use the provided Herwig7 input files to test your setup
+* Choose one of the following input files
+  * LEP.in Simple example of e+ e- collision
+  * LHC.in Example of p p collision
+  * LHC-Matchbox.in Example of the use of the Matchbox framework (Requires quite some time!)
+* You can start the test via
+  1. Reading the input file and producing a run file
+  
+    ```
+    Herwig read INPUTFILE.in
+    ```
+  2. Starting Herwig7 using the run file
+  
+    ```
+    Herwig run RUNFILE.run
+    ```
+    Note: You have to give the name of the run file (.run extension)
