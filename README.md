@@ -181,3 +181,9 @@ ssh USERNAME@lxplus.cern.ch
    ```
    scram build
    ```
+8. Test if the ThePEG interface is working using a provided cmsRun config file
+   
+   ```
+   cmsRun Herwigpp_TestProcess_cff_py_GEN_SIM.py
+   ```
+   Note: After roughly 5 minutes you should have produced 5 ttH events at GenSim level using Herwig7.
