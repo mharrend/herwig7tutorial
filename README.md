@@ -261,6 +261,17 @@ ssh USERNAME@lxplus.cern.ch
  ```
  This name is given to the event generator. Furthermore, we point Herwig to the generator module which should be used as a template for the event generator.
  
+ * Line 98:
+ 
+ ```
+ 'set /Herwig/Generators/LHCGenerator:DebugLevel 2',
+ ```
+ Sometimes it is useful to increase the verbosity of the event generation. Please make sure that you do comment out or remove the following line (if existing)
+ ```
+      'set /Herwig/Generators/LHCGenerator:UseStdout 0',
+ ```
+ so that Herwig7 does not suppress the output.
+ 
  * Line 137ff:
  
  ```
