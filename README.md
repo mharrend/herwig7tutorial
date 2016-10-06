@@ -151,13 +151,32 @@ ssh USERNAME@lxplus.cern.ch
   git pull
   ```
   
-4. Reset your scram build cache
+4. Check that you have set the Herwig7 local installation and corresponding environment via
+  
+  ```
+  cd $CMSSW_BASE/src
+  source herwig7-env.sh
+  ```
+
+5. Make sure that your scram setup is working properly
+  
+  ```
+  scram setup thepeg
+  ```
+  Note: Your THEPEG_BASE variable should point to /afs/cern.ch/work/m/mharrend/public/herwig7tutorial-71X/thepeg-install
+  
+  ```
+  scram setup herwigpp
+  ```
+  Note: Your HERWIGPP_BASE variable should point to /afs/cern.ch/work/m/mharrend/public/herwig7tutorial-71X/herwig7-install
+  
+6. Reset your scram build cache
   
   ```
   scram b clean
   ```
 
-5. Build ThePEG interface via scram build
+7. Build ThePEG interface via scram build
 
    ```
    scram build
