@@ -328,3 +328,26 @@ from Configuration.Generator.HerwigppEnergy_13TeV_cfi import *
  ```
  will be later used as input configuration for the Herwig7 event generation.
  
+ * We will now generate a cmsRun config file by using the cmsDriver.py command. 
+  * In principle, we will use the same options as given in line 5 of the Herwigpp_TestProcess_cff_py_GEN_SIM.py file.
+  * Please type 
+  ```
+  cmsDriver.py Herwigpp_DummyProcess_cff.py --fileout file:DummyProcess.root --mc --eventcontent RAWSIM --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM --conditions MCRUN2_71_V1::All --beamspot Realistic50ns13TeVCollision --step GEN,SIM --magField 38T_PostLS1 --no_exec -n 5
+  ```
+  Many of these commandline options are only of little interest in this scope. But please note:
+   * --fileout The name of the resulting CMSSW root file containing the GenSim events.
+   * --mc Telling cmsDriver that we will handle MC events
+   * --datatier and --step Defining which kind of steps will be done and which kind of format the output will be.
+   * -n The number of events we would like to produce.
+ * You should have now created a file called Herwigpp_DummyProcess_cff_py_GEN_SIM.py
+ 
+ * Please have a look on this file. 
+   * You should observe that it is rather similar to the file from Tut1. 
+   * Furthermore, you should take notice that the blocks have gotten replaced by their contents.
+   
+ * Start the event generation by typing 
+ ```
+ cmsRun Herwigpp_DummyProcess_cff_py_GEN_SIM.py
+ ```
+  * Note: In the following parts you will slightly adjust the config fragment and you will have to repeat these steps then.
+ 
