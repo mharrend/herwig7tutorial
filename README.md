@@ -1,5 +1,20 @@
 # Herwig7 tutorial at CERN 06 to 07 October 2016
 
+Table of Contents
+=================
+
+  * [Herwig7 tutorial at CERN 06 to 07 October 2016](#herwig7-tutorial-at-cern-06-to-07-october-2016)
+    * [Link to corresponding Indico page](#link-to-corresponding-indico-page)
+    * [Link to corresponding Vidyo room](#link-to-corresponding-vidyo-room)
+    * [Purpose of repository](#purpose-of-repository)
+    * [Setup of Herwig7 in CMSSW 8_1_0_pre12](#setup-of-herwig7-in-cmssw-8_1_0_pre12)
+      * [Steps in detail](#steps-in-detail)
+      * [Steps in a nutshell (first setup)](#steps-in-a-nutshell-first-setup)
+      * [Steps in a nutshell (subsequent use of current setup)](#steps-in-a-nutshell-subsequent-use-of-current-setup)
+      * [Test of setup](#test-of-setup)
+
+
+
 ## Link to corresponding Indico page
 https://indico.cern.ch/event/567362/
 
