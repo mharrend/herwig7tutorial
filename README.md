@@ -187,3 +187,26 @@ ssh USERNAME@lxplus.cern.ch
    cmsRun Herwigpp_TestProcess_cff_py_GEN_SIM.py
    ```
    Note: After roughly 5 minutes you should have produced 5 ttH events at GenSim level using Herwig7.
+   
+## Start of the ThePEG interface tutorial
+
+* You should have now a working version of Herwig7 and the ThePEG interface.
+* Please always remember that you have to do CMSENV and to source the herwig7 environment via
+
+  ```
+  cd CMSSW_7_1_25_patch1/src
+  cmsenv
+  source herwig7-env.sh
+  ```
+  if you have started a new terminal.
+  
+### Run first test job, if not already done
+* If not already done, run the first test job via
+   ```
+   cmsRun Herwigpp_TestProcess_cff_py_GEN_SIM.py
+   ```
+* This job will produce 5 ttH events at GenSim level using the built-in matrix elements of Herwig7.
+* The output events will be stored in a CMSSW root file called TestProcess.root.
+
+1. Open the cmsRun config file Herwigpp_TestProcess_cff_py_GEN_SIM.py to take a closer look what goes on under the hood.
+
