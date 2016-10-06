@@ -9,8 +9,8 @@
 # Technical parameters for this run
 ##################################################
 cd /Herwig/Generators
-set LHCGenerator:NumberOfEvents 10000000
-set LHCGenerator:RandomNumberGenerator:Seed 31122001
+set LHCGenerator:NumberOfEvents 1000
+set LHCGenerator:RandomNumberGenerator:Seed 31
 set LHCGenerator:PrintEvent 10
 set LHCGenerator:MaxErrors 10000
 

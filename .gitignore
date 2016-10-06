@@ -3,6 +3,8 @@
 *.hep
 *.log
 *.root
+*.hepmc
+*.run
 Herwig-scratch
 
 
