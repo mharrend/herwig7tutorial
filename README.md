@@ -104,7 +104,7 @@ ssh USERNAME@lxplus.cern.ch
    source herwig7-env.sh
    ```
 
-### Test of setup
+### Test of Herwig7 setup
 * You can use the provided Herwig7 input files to test your setup
 * Choose one of the following input files
   * LEP.in Simple example of e+ e- collision
@@ -122,3 +122,68 @@ ssh USERNAME@lxplus.cern.ch
     Herwig run RUNFILE.run
     ```
     Note: You have to give the name of the run file (.run extension)
+
+## Setup of old CMSSW ThePEG interface
+
+* We will now setup an adopted version of the old CMSSW ThePEG interface which works together with Herwig7 and provides the old Herwig++ 2.7.1 functionality.
+* Since the usage of the new Herwig7 interface will be quite similar to the ThePEG interface it makes sense to get comfortable with the ThePEG interface first.
+* By the way, this is an easy and straightforward way to do comparison studies between the old ThePEG+Herwig++ interface and the adopted ThePEG+Herwig7 interface.
+
+### Steps in detail
+
+1. Do not forget to setup CMSSW environment properly each time (CMSENV!)
+   
+   ```
+   cd CMSSW_7_1_25_patch1/src
+   cmsenv
+   ```
+2. Make sure that you have cloned this repository in your CMSSW/src folder, otherwise type (once)
+
+  ```
+  cd $CMSSW_BASE/src
+  git clone -b CMSSW71X https://github.com/mharrend/herwig7tutorial.git .
+  ```
+  Note: The src folder must be empty before cloning.
+  
+3. Confirm that you have the most recent version of the repository by
+  
+  ```
+  git pull
+  ```
+  
+4. Check that you have set the Herwig7 local installation and corresponding environment via
+  
+  ```
+  cd $CMSSW_BASE/src
+  source herwig7-env.sh
+  ```
+
+5. Make sure that your scram setup is working properly
+  
+  ```
+  scram setup thepeg
+  ```
+  Note: Your THEPEG_BASE variable should point to /afs/cern.ch/work/m/mharrend/public/herwig7tutorial-71X/thepeg-install
+  
+  ```
+  scram setup herwigpp
+  ```
+  Note: Your HERWIGPP_BASE variable should point to /afs/cern.ch/work/m/mharrend/public/herwig7tutorial-71X/herwig7-install
+  
+6. Reset your scram build cache
+  
+  ```
+  scram b clean
+  ```
+
+7. Build ThePEG interface via scram build
+
+   ```
+   scram build
+   ```
+8. Test if the ThePEG interface is working using a provided cmsRun config file
+   
+   ```
+   cmsRun Herwigpp_TestProcess_cff_py_GEN_SIM.py
+   ```
+   Note: After roughly 5 minutes you should have produced 5 ttH events at GenSim level using Herwig7.
