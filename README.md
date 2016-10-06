@@ -208,7 +208,7 @@ ssh USERNAME@lxplus.cern.ch
 * This job will produce 5 ttH events at GenSim level using the built-in matrix elements of Herwig7.
 * The output events will be stored in a CMSSW root file called TestProcess.root.
 
-1. Open the cmsRun config file Herwigpp_TestProcess_cff_py_GEN_SIM.py to take a closer look what goes on under the hood.
+* Open the cmsRun config file Herwigpp_TestProcess_cff_py_GEN_SIM.py to take a closer look what goes on under the hood.
  * Line 5:
  
  ```
@@ -290,3 +290,41 @@ ssh USERNAME@lxplus.cern.ch
  dummyprocess = cms.vstring('insert /Herwig/MatrixElements/SimpleQCD:MatrixElements[0] /Herwig/MatrixElements/MEPP2ttbarH')
  ```
  This is the definition of our hard subprocess. We define the use of internal matrix elements of the pp > ttH process for the event generation.
+
+### Tut2: Start from scratch and generate your own cmsRun config
+* The usual workflow in CMSSW is to start with a config fragment which is then converted by the cmsDriver.py command into a cmsRun config file.
+* We will start with a basic config fragment for Herwig7 / ThePEG and will create a cmsRun config file before we are producing some events.
+
+* Please take a look at the Herwigpp_DummyProcess_cff.py file.
+ * You should observe that the config fragment is fairly manageable.
+ * In the first few lines 
+ 
+ ```
+ from Configuration.Generator.HerwigppDefaults_cfi import *
+from Configuration.Generator.HerwigppUE_EE_5C_cfi import *
+from Configuration.Generator.HerwigppPDF_CTEQ6_LO_cfi import *
+from Configuration.Generator.HerwigppEnergy_13TeV_cfi import *
+ ```
+ config snippets -- which are defined as python blocks -- are imported. The config fragments can be found here: https://github.com/cms-sw/cmssw/tree/CMSSW_8_1_X/Configuration/Generator/python
+ * Afterwards the corresponding blocks
+ 
+ ```
+        herwigDefaultsBlock,
+        herwigppUESettingsBlock,
+        herwigppPDFSettingsBlock,
+        herwigppEnergySettingsBlock,
+ ```
+ are occuring in the EDFilter part. In this way, the content of the python blocks is later added as config snippets to the EDFilter section of the cmsRun config file. During the cmsDriver.py command these blocks will be replaced by their content.
+ * Please remember that only config snippets either directly mentioned in the parameterSets part or indirectly referenced by a mother snippet
+ ```
+ parameterSets = cms.vstring(
+                'hwpp_cmsDefaults',
+                'hwpp_ue_EE5C',
+                'hwpp_pdf_CTEQ6L1',
+                'hwpp_cm_13TeV',
+                'dummyprocess',
+
+        ),
+ ```
+ will be later used as input configuration for the Herwig7 event generation.
+ 
