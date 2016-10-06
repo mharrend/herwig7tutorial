@@ -1,6 +1,6 @@
 <tool name="herwigpp" version="7.0.2">
   <client>
-    <environment name="HERWIGPP_BASE" default="/afs/cern.ch/work/m/mharrend/public/herwig7tutorial/herwig7-install"/>
+    <environment name="HERWIGPP_BASE" default="/afs/cern.ch/work/m/mharrend/public/herwig7tutorial-71X/herwig7-install"/>
     <environment name="LIBDIR" default="$HERWIGPP_BASE/lib/Herwig"/>
     <environment name="INCLUDE" default="$HERWIGPP_BASE/include/Herwig"/>
   </client>
