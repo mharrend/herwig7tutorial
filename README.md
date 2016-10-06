@@ -188,7 +188,7 @@ ssh USERNAME@lxplus.cern.ch
    ```
    Note: After roughly 5 minutes you should have produced 5 ttH events at GenSim level using Herwig7.
    
-## Start of the ThePEG interface tutorial
+## Tut: Start of the ThePEG interface tutorial
 
 * You should have now a working version of Herwig7 and the ThePEG interface.
 * Please always remember that you have to do CMSENV and to source the herwig7 environment via
@@ -200,7 +200,7 @@ ssh USERNAME@lxplus.cern.ch
   ```
   if you have started a new terminal.
   
-### Run first test job, if not already done
+### Tut1: Run first test job, if not already done
 * If not already done, run the first test job via
    ```
    cmsRun Herwigpp_TestProcess_cff_py_GEN_SIM.py
@@ -209,4 +209,33 @@ ssh USERNAME@lxplus.cern.ch
 * The output events will be stored in a CMSSW root file called TestProcess.root.
 
 1. Open the cmsRun config file Herwigpp_TestProcess_cff_py_GEN_SIM.py to take a closer look what goes on under the hood.
-
+ * Line 5:
+ 
+ ```
+ # with command line options: Herwigpp_DummyProcess_cff.py --fileout file:DummyProcess.root --mc --eventcontent RAWSIM --customise SLHCUpgradeSimulations/Configuration/postLS1Customs.customisePostLS1,Configuration/DataProcessing/Utils.addMonitoring --datatier GEN-SIM --conditions MCRUN2_71_V1::All --beamspot Realistic50ns13TeVCollision --step GEN,SIM --magField 38T_PostLS1 --no_exec -n 5
+ ```
+ The cmsDriver.py command was invoked with these arguments to produce the cmsRun config file. You should remember and save this line, since we will adopt and use it quite often in the next few tutorial exercises.
+ 
+ * Line 26f.: 
+ 
+ ```
+ process.maxEvents = cms.untracked.PSet(
+    input = cms.untracked.int32(5)
+ ```
+ Here, we define the number of events we would like to generate. Compare this with line 97
+ 
+ * Line 31:
+ 
+ ```
+ process.source = cms.Source("EmptySource")
+ ```
+ We make use of an empty source, since Herwig7 / ThePEG is implemented as an EDFilter and generates the events during the EDFilter step.
+ 
+ * Line 50:
+ 
+ ```
+ fileName = cms.untracked.string('file:TestProcess.root'),
+ ```
+ The name of the resulting CMSSW output file.
+ 
+ 
