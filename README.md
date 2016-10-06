@@ -7,7 +7,7 @@ Table of Contents
     * [Link to corresponding Indico page](#link-to-corresponding-indico-page)
     * [Link to corresponding Vidyo room](#link-to-corresponding-vidyo-room)
     * [Purpose of repository](#purpose-of-repository)
-    * [Setup of Herwig7 in CMSSW 8_1_0_pre12](#setup-of-herwig7-in-cmssw-8_1_0_pre12)
+    * [Setup of Herwig7 in CMSSW 7_1_25_patch1](#setup-of-herwig7-in-cmssw-7_1_25_patch1)
       * [Steps in detail](#steps-in-detail)
       * [Steps in a nutshell (first setup)](#steps-in-a-nutshell-first-setup)
       * [Steps in a nutshell (subsequent use of current setup)](#steps-in-a-nutshell-subsequent-use-of-current-setup)
@@ -26,10 +26,11 @@ https://vidyoportal.cern.ch/flex.html?roomdirect.html&key=HZqbAUgO6MnvKQdUuDu7w5
 * Provide Herwig7 for the CMS persons participating in the tutorial
 * Collection of material required for the CMS-specific tutorial
 
-## Setup of Herwig7 in CMSSW 8_1_0_pre12
+## Setup of Herwig7 in CMSSW 7_1_25_patch1
 
-* Unfortunately, the Herwig7 package -- being implemented in CMSSW 8_1_X -- still has some issues which could not get fixed before the date of the tutorial.
-* Therefore, a working Herwig7 installation was setup on LXPLUS which can be used by the participants.
+* Unfortunately, the Herwig7 package and the Herwig7 interface which will be implemented in CMSSW 8_1_X are not fully usuable among others due to the fact that no official candidate CMSSW 8_1_X version was released.
+* Therefore, a working Herwig7 installation was setup on LXPLUS using the CMSSW 7_1_X branch which can be used by the participants.
+* In this way participants can use all parts of the generator chain configuration.
 
 ### Steps in detail 
 
@@ -38,23 +39,23 @@ https://vidyoportal.cern.ch/flex.html?roomdirect.html&key=HZqbAUgO6MnvKQdUuDu7w5
   ```
 ssh USERNAME@lxplus.cern.ch
 ```
-2. Setup CMSSW 8_1_0_pre12 using the GCC530 architecture (only needed once)
+2. Setup CMSSW 7_1_25_patch using the GCC481 architecture (only needed once)
 
   ```
-  export SCRAM_ARCH=slc6_amd64_gcc530
-  scram project CMSSW_8_1_0_pre12
+  export SCRAM_ARCH=slc6_amd64_gcc481
+  scram project CMSSW_7_1_25_patch1
   ```
 3. Do not forget to setup CMSSW environment properly each time (CMSENV!)
    
    ```
-   cd CMSSW_8_1_0_pre12/src
+   cd CMSSW_7_1_25_patch1/src
    cmsenv
    ```
-4. Clone the CMSW81X branch in your CMSSW/src folder (only needed once)
+4. Clone the CMSW71X branch in your CMSSW/src folder (only needed once)
    
    ```
    cd $CMSSW_BASE/src
-   git clone -b CMSSW81X https://github.com/mharrend/herwig7tutorial.git .
+   git clone -b CMSSW71X https://github.com/mharrend/herwig7tutorial.git .
    ```
    Note: The dot is important and your CMSSW/src folder should be empty
    
@@ -75,14 +76,14 @@ ssh USERNAME@lxplus.cern.ch
 ### Steps in a nutshell (first setup)
 
   ```
-  export SCRAM_ARCH=slc6_amd64_gcc530
-  scram project CMSSW_8_1_0_pre12
+  export SCRAM_ARCH=slc6_amd64_gcc481
+  scram project CMSSW_7_1_25_patch1
   
-   cd CMSSW_8_1_0_pre12/src
+   cd CMSSW_7_1_25_patch1/src
    cmsenv
  
    cd $CMSSW_BASE/src
-   git clone -b CMSSW81X https://github.com/mharrend/herwig7tutorial.git .
+   git clone -b CMSSW71X https://github.com/mharrend/herwig7tutorial.git .
 
    git pull
 
@@ -92,7 +93,7 @@ ssh USERNAME@lxplus.cern.ch
 
 ### Steps in a nutshell (subsequent use of current setup)
    ```
-   cd CMSSW_8_1_0_pre12/src
+   cd CMSSW_7_1_25_patch1/src
    cmsenv
  
    cd $CMSSW_BASE/src
