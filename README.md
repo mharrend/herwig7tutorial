@@ -222,7 +222,7 @@ ssh USERNAME@lxplus.cern.ch
  process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(5)
  ```
- Here, we define the number of events we would like to generate. Compare this with line 97
+ Here, we define the number of events we would like to generate. Compare this with line 97, we instruct Herwig to generate an awful amount of events (100M) but CMSSW stops the Herwig7 event generation as soon as the requested event number is reached.
  
  * Line 31:
  
@@ -238,4 +238,44 @@ ssh USERNAME@lxplus.cern.ch
  ```
  The name of the resulting CMSSW output file.
  
+ * Line 67:
  
+ ```
+ process.generator = cms.EDFilter("ThePEGGeneratorFilter",
+ ```
+ The start of the Herwig7 / ThePEG configuration. One cannot document everything here, but I will try to outline the major parts.
+ 
+ * Line 68f.:
+ 
+ ```
+     hwpp_cmsDefaults = cms.vstring('+hwpp_basicSetup',
+        '+hwpp_setParticlesStableForDetector'),
+ ```
+ Using the CMSSW config syntax, we define some basic instructions for Herwig7 in the kind of two variable-length strings hwpp_basicSetup and hwpp_setParticlesStableForDetector. These two strings are defined below.
+ 
+ * Line 70 and line 93:
+ 
+ ```
+ run = cms.string('LHC'),
+ generatorModule = cms.string('/Herwig/Generators/LHCGenerator'),
+ ```
+ This name is given to the event generator. Furthermore, we point Herwig to the generator module which should be used as a template for the event generator.
+ 
+ * Line 137ff:
+ 
+ ```
+     parameterSets = cms.vstring('hwpp_cmsDefaults',
+        'hwpp_ue_EE5C',
+        'hwpp_pdf_CTEQ6L1',
+        'hwpp_cm_13TeV',
+        'dummyprocess'),
+ ```
+ Here, we define which parts of the config snippets are really used for the event generation.
+ Please note that we can define more snippets in the config above, but only snippets listed here or recursively included will be used as input configuration for the Herwig7 event generator. 
+ 
+ * Line 143:
+ 
+ ```
+ dummyprocess = cms.vstring('insert /Herwig/MatrixElements/SimpleQCD:MatrixElements[0] /Herwig/MatrixElements/MEPP2ttbarH')
+ ```
+ This is the definition of our hard subprocess. We define the use of internal matrix elements of the pp > ttH process for the event generation.
