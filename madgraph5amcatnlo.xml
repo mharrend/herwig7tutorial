@@ -1,0 +1,8 @@
+<tool name="madgraph5amcatnlo" version="2.4.3">
+  <lib name="MadGraph5aMCatNLO"/>
+  <client>
+    <environment name="MADGRAPH5AMCATNLO_BASE" default="/afs/cern.ch/work/m/mharrend/public/herwig7tutorial-71X/madgraph5amcatnlo-install"/>
+  </client>
+  <runtime name="ROOT_INCLUDE_PATH" value="$MADGRAPH5AMCATNLO_BASE" type="path"/>
+  <runtime name="ROOT_PATH" value="$MADGRAPH5AMCATNLO_BASE" type="path"/>
+</tool>
