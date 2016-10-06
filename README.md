@@ -327,6 +327,13 @@ from Configuration.Generator.HerwigppEnergy_13TeV_cfi import *
         ),
  ```
  will be later used as input configuration for the Herwig7 event generation.
+ * Please checkout also the definition of the dummy process
+ ```
+ dummyprocess = cms.vstring(
+                'insert /Herwig/MatrixElements/SimpleQCD:MatrixElements[0] /Herwig/MatrixElements/MEPP2ttbarH',
+        ),
+ ```
+ and try to memorize the path stated by the insert command. We will make use of these path in the next tutorial.
  
 * We will now generate a cmsRun config file by using the cmsDriver.py command. 
  * In principle, we will use the same options as given in line 5 of the Herwigpp_TestProcess_cff_py_GEN_SIM.py file.
@@ -351,3 +358,38 @@ from Configuration.Generator.HerwigppEnergy_13TeV_cfi import *
  ```
  * Note: In the following parts you will slightly adjust the config fragment and you will have to repeat these steps then.
  
+## Tut3: Change of hard subprocess
+* So far, we have generated pp > ttH events.
+* We will use some kind of trick to find out which internal matrix elements are contained in Herwig7.
+* Afterwards, we will change the hard subprocess by using another kind of matrix element process.
+
+* First we want to access the Herwig7 repository which contains many information of possible Herwig7 configuration options.
+ * On the command line type
+ ```
+ Herwig read
+ ```
+ * You should now have a command line with 
+ ```
+ Herwig>
+ ```
+ at the beginning. This means you have access to the internal default Herwig7 repository (database).
+ * Check the commands which are available for your use by typing
+ ```
+ Herwig> help all
+ ```
+ * Since we are interested in the available matrix elements, let us navigate to them
+ ```
+ Herwig> cd /Herwig/MatrixElements
+ ```
+ Note: That you could have know this path since it was also used in the dummy process part of the previous tutorial.
+ * Let us checkout which kind of matrix elements available:
+ ```
+ Herwig> ls
+ ```
+ E.g. we could change to the PowhegMEPP2VV matrix element.
+ * Leave the Herwig read mode by typing CTRL+D.
+
+* Let us try to run the PowhegMEPP2VV matrix element process now.
+ * Navigate to the Configuration/Generator/python directory.
+ * Copy the Herwigpp_DummyProcess_cff.py and change the dummy process part.
+ * Afterwards run the cmsDriver.py command on it.
