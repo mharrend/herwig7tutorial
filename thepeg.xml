@@ -7,7 +7,6 @@
   </client>
   <runtime name="THEPEGPATH" value="$THEPEG_BASE/share/ThePEG"/>
   <runtime name="ROOT_INCLUDE_PATH" value="$INCLUDE" type="path"/>
-  <use name="root_cxxdefaults"/>
   <use name="lhapdf"/>
   <use name="gsl"/>
 </tool>
