@@ -4,6 +4,7 @@ Table of Contents
 =================
 
   * [Herwig7 tutorial at CERN 06 to 07 October 2016](#herwig7-tutorial-at-cern-06-to-07-october-2016)
+  * [Table of Contents](#table-of-contents)
     * [Link to corresponding Indico page](#link-to-corresponding-indico-page)
     * [Link to corresponding Vidyo room](#link-to-corresponding-vidyo-room)
     * [Purpose of repository](#purpose-of-repository)
@@ -11,7 +12,14 @@ Table of Contents
       * [Steps in detail](#steps-in-detail)
       * [Steps in a nutshell (first setup)](#steps-in-a-nutshell-first-setup)
       * [Steps in a nutshell (subsequent use of current setup)](#steps-in-a-nutshell-subsequent-use-of-current-setup)
-      * [Test of setup](#test-of-setup)
+      * [Test of Herwig7 setup](#test-of-herwig7-setup)
+    * [Setup of old CMSSW ThePEG interface](#setup-of-old-cmssw-thepeg-interface)
+      * [Steps in detail](#steps-in-detail-1)
+    * [Tut: Start of the ThePEG interface tutorial](#tut-start-of-the-thepeg-interface-tutorial)
+      * [Tut1: Run first test job, if not already done](#tut1-run-first-test-job-if-not-already-done)
+      * [Tut2: Start from scratch and generate your own cmsRun config](#tut2-start-from-scratch-and-generate-your-own-cmsrun-config)
+      * [Tut3: Change of hard subprocess](#tut3-change-of-hard-subprocess)
+
 
 
 
