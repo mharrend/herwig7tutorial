@@ -1,6 +1,7 @@
 #!/bin/sh
 cp $CMSSW_BASE/src/thepeg.xml $CMSSW_BASE/config/toolbox/slc6_amd64_gcc530/tools/selected/thepeg.xml
 cp $CMSSW_BASE/src/herwigpp.xml $CMSSW_BASE/config/toolbox/slc6_amd64_gcc530/tools/selected/herwigpp.xml
+cp $CMSSW_BASE/src/madgraph5amcatnlo.xml $CMSSW_BASE/config/toolbox/slc6_amd64_gcc530/tools/selected/herwigpp.xml
 
 export CPATH=/afs/cern.ch/work/m/mharrend/public/herwig7tutorial/thepeg-install/include:/afs/cern.ch/work/m/mharrend/public/herwig7tutorial/gosam-install/include:/afs/cern.ch/work/m/mharrend/public/herwig7tutorial/herwig7-install/include:/cvmfs/cms.cern.ch/slc6_amd64_gcc530/external/boost/1.57.0-giojec/include
 export HERWIGPATH=/afs/cern.ch/work/m/mharrend/public/herwig7tutorial/herwig7-install/share/Herwig
